@@ -123,6 +123,9 @@ def collect_ranges(video_path: str) -> list[tuple[float, float]]:
                 end = None
                 last_bounding_box = None
 
+    if start is not None:
+        ranges.append((start, end))
+
     video_capture.release()
 
     ranges = [range for range in ranges if range[1] - range[0] >= 3]
